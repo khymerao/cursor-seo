@@ -1,0 +1,23 @@
+---
+description: Route SEO requests to cursor-seo-router or a specific seo-* skill. Use when user mentions SEO, audit, schema, GEO, AI Overviews, E-E-A-T, Core Web Vitals, sitemap, keywords, backlinks, local SEO, maps, hreflang, DataForSEO.
+alwaysApply: false
+---
+
+# Cursor SEO Triggers
+
+When the user request involves SEO:
+
+1. Load skill `cursor-seo-router` for open-ended or multi-part goals.
+2. Load the specific `seo-*` skill directly when intent is unambiguous
+   (e.g. `seo-schema` for "generate schema markup").
+3. For live data (SERP, keyword volume, backlinks-by-API), prefer the
+   `user-dataforseo` MCP server; fallback is paste-data per
+   `skills/seo-dataforseo/references/cursor-mcp-mapping.md`.
+4. Python scripts run from the plugin venv:
+   `~/.cursor/plugins/local/cursor-seo/.venv/bin/python`.
+
+## Superpowers priority
+
+- SEO **deliverables** → cursor-seo-router / seo-* skills (skip brainstorming).
+- SEO **implementation in code** → Superpowers brainstorming first unless the
+  user says otherwise.
