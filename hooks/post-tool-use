@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+INPUT="$(cat 2>/dev/null || true)"
+FILE="$(printf '%s' "$INPUT" | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d.get("file_path","") or d.get("path",""))' 2>/dev/null || true)"
+CWD="$(printf '%s' "$INPUT" | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d.get("cwd",""))' 2>/dev/null || true)"
+
+[[ -n "$FILE" ]] || exit 0
+[[ "$FILE" = /* ]] || FILE="${CWD:-$(pwd)}/$FILE"
+[[ -f "$FILE" ]] || exit 0
+
+case "$FILE" in
+  *.html|*.json|*schema*.md|*SCHEMA*.md) ;;
+  *) exit 0 ;;
+esac
+
+PLUGIN_ROOT="${CURSOR_PLUGIN_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+PY="$PLUGIN_ROOT/.venv/bin/python"
+[[ -x "$PY" ]] || PY="python3"
+
+if ! OUT="$("$PY" "$PLUGIN_ROOT/hooks/validate-schema.py" "$FILE" 2>&1)"; then
+  MSG="$(printf '%s' "$OUT" | tail -3 | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')"
+  printf '{"additional_context": %s}\n' "$MSG"
+fi
+exit 0
