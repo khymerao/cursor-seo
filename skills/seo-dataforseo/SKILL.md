@@ -28,6 +28,11 @@ across 10 API modules with 79+ MCP tools.
 
 ## Prerequisites
 
+> **Cursor port:** the DataForSEO MCP server is configured in Cursor as
+> `user-dataforseo` (Settings → Tools & MCP). Do NOT run
+> `extensions/dataforseo/install.sh` — it targets Claude Code. Tool coverage
+> and command mapping: `references/cursor-mcp-mapping.md`.
+
 This skill requires the DataForSEO extension to be installed:
 ```bash
 ./extensions/dataforseo/install.sh
