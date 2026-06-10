@@ -10,7 +10,7 @@ CWD="$(printf '%s' "$INPUT" | python3 -c 'import json,sys; d=json.load(sys.stdin
 [[ -f "$FILE" ]] || exit 0
 
 case "$FILE" in
-  *.html|*.json|*schema*.md|*SCHEMA*.md) ;;
+  *.html|*.htm|*.jsx|*.tsx|*.vue|*.svelte|*.php|*.ejs) ;;
   *) exit 0 ;;
 esac
 

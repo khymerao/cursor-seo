@@ -33,15 +33,16 @@ across 10 API modules with 79+ MCP tools.
 > `extensions/dataforseo/install.sh` — it targets Claude Code. Tool coverage
 > and command mapping: `references/cursor-mcp-mapping.md`.
 
-This skill requires the DataForSEO extension to be installed:
-```bash
-./extensions/dataforseo/install.sh
-```
+<!-- CURSOR-OVERRIDE: install path differs in Cursor port -->
+> **Cursor:** this skill uses the `user-dataforseo` MCP server (Settings → Tools
+> & MCP). There is no `install.sh` to run. Verify the server is connected by
+> checking that a tool like `serp_organic_live_advanced` is available; if not,
+> see `docs/mcp-setup.md`. Mapping: `references/cursor-mcp-mapping.md`.
 
-**Check availability:** Before using any DataForSEO tool, verify the MCP server
-is connected by checking if `serp_organic_live_advanced` or any DataForSEO tool
-is available. If tools are not available, inform the user the extension is not
-installed and provide install instructions.
+**Check availability:** Before using any DataForSEO tool, verify the
+`user-dataforseo` MCP server is connected by checking if `serp_organic_live_advanced`
+or any DataForSEO tool is available. If tools are not available, point the user to
+`docs/mcp-setup.md`.
 
 ## API Credit Awareness
 
@@ -392,7 +393,8 @@ When DataForSEO MCP tools are available, other claude-seo skills can leverage li
 
 ## Error Handling
 
-- **MCP server not connected**: Report that DataForSEO extension is not installed or MCP server is unreachable. Suggest running `./extensions/dataforseo/install.sh`
+<!-- CURSOR-OVERRIDE -->
+- **MCP server not connected**: Report that DataForSEO extension is not installed or MCP server is unreachable. Suggest connecting/enabling the `user-dataforseo` MCP server (Settings → Tools & MCP); see `docs/mcp-setup.md`
 - **API authentication failed**: Report invalid credentials. Suggest checking DataForSEO API login/password in MCP config
 - **Rate limit exceeded**: Report the limit hit and suggest waiting before retrying
 - **No results returned**: Report "no data found" for the query rather than guessing. Suggest broadening the query or checking location/language codes

@@ -10,6 +10,12 @@ metadata:
   category: seo
 ---
 
+<!-- CURSOR-OVERRIDE: inline sequential agents -->
+> **cursor-seo port:** sub-agents run **inline and sequentially**. Ignore any
+> "parallel", "simultaneously", or "up to 15 agents" wording below — read each
+> `agents/seo-*.md` and execute it in the current context, one at a time. See
+> `skills/cursor-seo-router/SKILL.md` for the inline-agent contract.
+
 # SEO: Universal SEO Analysis Skill
 
 **Invocation:** `/seo $1 $2` where `$1` is the command and `$2` is the URL or argument.

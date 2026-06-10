@@ -75,6 +75,14 @@ markdown reports instead of PDF.
 └── scripts/            # Analysis scripts (run via .venv/bin/python)
 ```
 
+## Schema validation hook (advisory)
+
+The `post-tool-use` hook runs `validate-schema.py` after edits to schema-bearing
+files (HTML, JSX/TSX, Vue, Svelte, PHP, EJS, etc.). In this Cursor port the hook
+is **advisory**: it always exits `0` and injects `additional_context` for the
+agent — it does **not** block edits. Upstream Claude Code used exit code `2` to
+block invalid schema writes.
+
 ## Post-install checks in Cursor
 
 After Reload Window, confirm in Cursor Settings:
@@ -123,7 +131,7 @@ Read the `ERROR:` lines. Common causes:
 
 1. Reload Window after install or hook changes
 2. Cursor **Settings → Hooks** — confirm cursor-seo hook is enabled
-3. Hook only runs on schema-relevant files (`*.html`, `*.json`, `*schema*.md`)
+3. Hook only runs on schema-relevant files (`*.html`, `*.htm`, `*.jsx`, `*.tsx`, `*.vue`, `*.svelte`, `*.php`, `*.ejs`)
 4. If blocking is unreliable, manually run:
    ```bash
    .venv/bin/python hooks/validate-schema.py path/to/file.json

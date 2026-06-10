@@ -23,6 +23,8 @@ Read the tool descriptor JSON before each call (mandatory for MCP tools).
 | `keywords-for-site <domain>` | `dataforseo_labs_google_keywords_for_site` |
 | `historical <keyword>` | `dataforseo_labs_google_historical_keyword_data`, `dataforseo_labs_google_historical_serps` |
 | `top-searches` | `dataforseo_labs_google_top_searches` |
+| *(utility)* | `dataforseo_labs_available_filters` — filter helper for Labs endpoints |
+| *(utility)* | `kw_data_google_trends_categories` — Google Trends category list helper |
 
 ## Not enabled in the current server config
 

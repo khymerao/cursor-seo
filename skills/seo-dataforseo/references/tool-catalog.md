@@ -1,3 +1,11 @@
+<!-- CURSOR-OVERRIDE: catalog scope in Cursor port -->
+> **Cursor port note:** In Cursor, only tools enabled in the `user-dataforseo`
+> MCP server (`ENABLED_MODULES`) are callable. The full catalog below is the
+> upstream reference. For the live Cursor command→tool mapping and the list of
+> currently enabled vs disabled modules, see `cursor-mcp-mapping.md`. Modules
+> `backlinks`, `onpage`, `content_analysis`, `business_data`, and
+> `ai_optimization` are OFF by default.
+
 # DataForSEO MCP Tool Catalog
 
 > Load this reference when you need to find a specific DataForSEO MCP tool

@@ -56,7 +56,16 @@ These trees and files were copied from upstream without content edits:
 
 | File | Change |
 |---|---|
-| `skills/seo-dataforseo/SKILL.md` | **Prerequisites block only** — added Cursor port note pointing to `user-dataforseo` MCP and `references/cursor-mcp-mapping.md`; upstream `extensions/dataforseo/install.sh` instructions retained below for reference but marked as Claude Code–only |
+| `skills/seo-dataforseo/SKILL.md` | **Prerequisites + Error Handling** — Cursor override blocks (`<!-- CURSOR-OVERRIDE -->`) replace `extensions/dataforseo/install.sh` with `user-dataforseo` MCP + `docs/mcp-setup.md` (Fix 1) |
+| `skills/seo-dataforseo/references/tool-catalog.md` | Prepended Cursor port note: only `ENABLED_MODULES` tools callable; see `cursor-mcp-mapping.md` (Fix 2) |
+| `skills/seo-audit/SKILL.md` | Post-frontmatter override: sub-agents run inline/sequentially, not parallel (Fix 3) |
+| `skills/seo/SKILL.md` | Post-frontmatter override: sub-agents run inline/sequentially, not parallel (Fix 3) |
+| `hooks/post-tool-use` | Extension filter aligned with `validate-schema.py` valid_extensions (Fix 4) |
+| `skills/seo-dataforseo/references/cursor-mcp-mapping.md` | Added utility tools `dataforseo_labs_available_filters`, `kw_data_google_trends_categories` (Fix 5) |
+| `docs/install.md` | Documented advisory (non-blocking) schema hook behavior (Fix 6) |
+
+**Trigger rule name:** `rules/cursor-seo-usage.mdc` (design doc referred to
+`cursor-seo-triggers.mdc`; this port uses `-usage`).
 
 No other upstream skill, agent, or script bodies were edited.
 
